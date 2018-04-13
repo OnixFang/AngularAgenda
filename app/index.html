@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Angular Agenda</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -16,7 +14,7 @@
         crossorigin="anonymous"></script>
 
     <!-- Customized CSS-->
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/main.css">
 
     <!-- Angular scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
@@ -29,23 +27,47 @@
 
     <nav class="navbar sticky-top navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
-            <img class="brandlogo" src="media/angularlogo.png" alt="angularlogo"> Angular Agenda</a>
+            <img class="brandlogo" src="media/angularjs-logo.png" alt="angularlogo"> Angular Agenda</a>
     </nav>
 
-    <div class="container">
-        <div class="row">
-            <div class="col jumbotron">
-                <h1>{{ message }}</h1>
+    <div class="container justify-content-center">
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-header">
+                    <span>Agenda</span>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" ng-repeat="task in agenda">
+                        <span ng-bind="task.description"></span>
+                        <span ng-bind="task.time | date: 'h:mm a'"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span>New Task</span>
+                </div>
+                <div class="container card-body">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            <span>Task</span>
+                            <input type="text" class="form-control" ng-model="newTask.description">
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <span>Time</span>
+                            <input type="time" class="form-control" ng-model="newTask.time">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <button class="btn btn-primary col-4" ng-click="addTask()">Save</button>
+                </div>
             </div>
         </div>
     </div>
 
     <nav class="navbar fixed-bottom navbar-expand navbar-dark bg-dark">
-        <div class="navbar-nav">
-            <a class="btn btn-secondary m-1" href="#/Home">
-                <span>Yeah</span>
-            </a>
-        </div>
     </nav>
 
 </body>
