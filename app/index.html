@@ -37,7 +37,7 @@
                     <span>Agenda</span>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" ng-repeat="task in agenda">
+                    <li ng-repeat="task in agenda" class="list-group-item">
                         <span ng-bind="task.description"></span>
                         <span ng-bind="task.time | date: 'h:mm a'"></span>
                     </li>
@@ -61,7 +61,8 @@
                     </div>
                 </div>
                 <div class="card-footer text-center">
-                    <button class="btn btn-primary col-4" ng-click="addTask()">Save</button>
+                    <button class="btn btn-primary col-4" ng-click="addTask(newTask)">Save</button>
+                    <button class="btn btn-primary col-4" ng-click="test()">Test</button>
                 </div>
             </div>
         </div>
